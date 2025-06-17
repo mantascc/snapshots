@@ -1,3 +1,12 @@
+// Initialize Typed.js
+const typed = new Typed('#typed-text', {
+  strings: ['Simulation snapshots'],
+  typeSpeed: 50,
+  showCursor: true,
+  cursorChar: '|',
+  autoInsertCss: true,
+});
+
 const imageCount = 33; // Total images you have
 const grid = document.querySelector('.grid');
 
