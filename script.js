@@ -7,7 +7,7 @@ const typed = new Typed('#typed-text', {
   autoInsertCss: true,
 });
 
-const imageCount = 33; // Total images you have
+const imageCount = 34; // Total images you have
 const grid = document.querySelector('.grid');
 
 for (let i = imageCount; i >= 1; i--) {
