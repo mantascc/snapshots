@@ -8,7 +8,7 @@
   { "file": "7.webp", "location": "Hej", "date": "" },
   { "file": "8.webp", "location": "Mayhem", "date": "" },
   { "file": "9.webp", "location": "Union Market", "date": "" },
-  { "file": "10.webp", "location": "Union Market", "date": "" },
+  { "file": "10.webp", "location": "Harris Teeter", "date": "" },
   { "file": "11.webp", "location": "Lufthavnen", "date": "" },
   { "file": "12.webp", "location": "DC", "date": "" },
   { "file": "13.webp", "location": "Shady grave", "date": "" },
@@ -32,5 +32,18 @@
   { "file": "31.webp", "location": "Studiestræde", "date": "" },
   { "file": "32.webp", "location": "Nørrebro st", "date": "" },
   { "file": "33.webp", "location": "Studiestræde", "date": "" },
-  { "file": "34.webp", "location": "Pilestræde", "date": "" }
+  { "file": "34.webp", "location": "Pilestræde", "date": "" },
+  { "file": "35.webp", "location": "Holmbladsgade", "date": "" },
+  { "file": "36.webp", "location": "Frederikssundsvej", "date": "" },
+  { "file": "37.webp", "location": "Sjællandsgade", "date": "" },
+  { "file": "38.webp", "location": "Store Kongensgade", "date": "" },
+  { "file": "39.webp", "location": "Trianglen", "date": "" },
+  { "file": "40.webp", "location": "Østerbrogade", "date": "" },
+  { "file": "41.webp", "location": "Nørrebrogade", "date": "" },
+  { "file": "42.webp", "location": "Svanemøllen", "date": "" },
+  { "file": "43.webp", "location": "Vesterport", "date": "" },
+  { "file": "44.webp", "location": "Vesterport", "date": "" },
+  { "file": "45.webp", "location": "Vesterbrogade", "date": "" },
+  { "file": "46.webp", "location": "Istedgade", "date": "" },
+  { "file": "45.webp", "location": "Vesterbrogade", "date": "" }
 ] 

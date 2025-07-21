@@ -19,7 +19,7 @@ fetch('images.json')
       div.innerHTML = `<img src="images/${image.file}" alt="${image.file}" loading="lazy">`;
       grid.appendChild(div);
 
-      // Tooltip logic for location
+      // Tooltip logic for location (hover only)
       div.addEventListener('mousemove', (e) => {
         let tooltip = document.getElementById('location-tooltip');
         if (!tooltip) {
@@ -33,6 +33,7 @@ fetch('images.json')
         tooltip.style.left = (e.clientX + 12) + 'px';
         tooltip.style.top = (e.clientY + 12) + 'px';
         tooltip.style.opacity = 1;
+        tooltip.style.transition = 'opacity 0.15s';
       });
       div.addEventListener('mouseleave', () => {
         const tooltip = document.getElementById('location-tooltip');
@@ -43,22 +44,3 @@ fetch('images.json')
       });
     });
   });
-
-// Tooltip for image file name on hover
-document.querySelectorAll('.tile').forEach(tile => {
-  const img = tile.querySelector('img');
-  const fileName = img ? img.getAttribute('src').split('/').pop() : '';
-  tile.addEventListener('mousemove', (e) => {
-    const tooltip = document.getElementById('filename-tooltip');
-    tooltip.textContent = fileName;
-    tooltip.style.display = 'block';
-    tooltip.style.left = (e.clientX + 12) + 'px';
-    tooltip.style.top = (e.clientY + 12) + 'px';
-    tooltip.style.opacity = 1;
-  });
-  tile.addEventListener('mouseleave', () => {
-    const tooltip = document.getElementById('filename-tooltip');
-    tooltip.style.display = 'none';
-    tooltip.style.opacity = 0;
-  });
-}); 

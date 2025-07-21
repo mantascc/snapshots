@@ -33,8 +33,9 @@ body {
   }
 
   .tile:hover {
-    transform: scale(1.01);
+    transform: scale(1.03);
     transition: transform 0.3s ease;
+    border-radius: 4px;
     border: 1px solid #ffffff;
   }
 
