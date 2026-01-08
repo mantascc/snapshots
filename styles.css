@@ -1,230 +1,248 @@
 /* Reset basic styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'VT323', monospace;
-    background-color: #232A33;
-  }
-  
-  /* Title styles */
-  .title {
-    text-align: center;
-    padding: 2rem 0;
-    margin: 0;
-    font-weight: 100;
-    font-size: 2.5rem;
-    color: #e0e0e0;
-  }
-  
-  /* Grid container */
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', monospace;
+  background-color: #232A33;
+}
+
+/* Title styles */
+.title {
+  text-align: center;
+  padding: 2rem 0;
+  margin: 0;
+  font-weight: 100;
+  font-size: 2.5rem;
+  color: #e0e0e0;
+}
+
+/* Grid container */
+.grid {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+
+/* Make sure images fit their tiles */
+.tile {
+  cursor: pointer;
+}
+
+.tile img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tile:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+}
+
+/* Breakpoints for more columns */
+@media (min-width: 600px) {
   .grid {
-    display: grid;
-    gap: 10px;
-    padding: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  
-  /* Make sure images fit their tiles */
-  .tile {
-    cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Tooltip for image file name */
+.filename-tooltip {
+  position: fixed;
+  background: rgba(30, 30, 30, 0.95);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+/* Map popover overlay */
+.map-popover-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  /* Slightly darker for better contrast */
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.map-popover-overlay.active {
+  display: flex;
+}
+
+/* Map popover card */
+.map-popover-card {
+  background: #1a1f27;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Map popover header */
+.map-popover-header {
+  background: #232A33;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2a3139;
+  flex-shrink: 0;
+}
+
+.map-popover-title {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+.map-popover-close {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.map-popover-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Map popover content container */
+.map-popover-content {
+  display: flex;
+  width: 100%;
+  /* Remove fixed height to allow content to dictate, but constrain max-height */
+  height: auto;
+  padding: 20px;
+  /* Add padding around content */
+  box-sizing: border-box;
+  gap: 20px;
+  /* Space between image and map */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image container in popover */
+.map-popover-image {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  /* Force square ratio */
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  /* Slight rounding for polish */
+}
+
+.map-popover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Map container in popover */
+.map-popover-map {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  /* Force square ratio */
+  position: relative;
+  /* Remove fixed dimensions */
+  border-radius: 4px;
+  /* Slight rounding for polish */
+}
+
+
+/* Container for the whole content area including buttons */
+.popover-body-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  .tile img {
-    width: 100%;
-    height: auto;
-    display: block;
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  .tile:hover {
-    transform: scale(1.03);
-    transition: transform 0.3s ease;
-    border-radius: 4px;
-    border: 1px solid #ffffff;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  /* Breakpoints for more columns */
-  @media (min-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  @media (min-width: 900px) {
-    .grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .grid {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-  
-  /* Tooltip for image file name */
-  .filename-tooltip {
-    position: fixed;
-    background: rgba(30, 30, 30, 0.95);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 1rem;
-    pointer-events: none;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    font-family: inherit;
-    transition: opacity 0.15s;
-  }
-
-  /* Map popover overlay */
-  .map-popover-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.2s ease;
-  }
-
-  .map-popover-overlay.active {
-    display: flex;
-  }
-
-  /* Map popover card */
-  .map-popover-card {
-    background: #1a1f27;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    max-width: 90vw;
-    max-height: 90vh;
-    animation: slideUp 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Map popover header */
-  .map-popover-header {
-    background: #232A33;
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #2a3139;
-    flex-shrink: 0;
-  }
-
-  .map-popover-title {
-    color: #e0e0e0;
-    font-size: 1.2rem;
-    margin: 0;
-    font-weight: 400;
-  }
-
-  .map-popover-close {
-    background: none;
-    border: none;
-    color: #e0e0e0;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-
-  .map-popover-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  /* Map popover content container */
+/* Responsive adjustments */
+@media (max-width: 900px) {
   .map-popover-content {
-    display: flex;
-    gap: 0;
-    overflow: auto;
+    flex-direction: column;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Allow scrolling if content is too tall */
   }
 
-  /* Image container in popover */
-  .map-popover-image {
-    width: 400px;
-    height: 400px;
-    flex-shrink: 0;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .map-popover-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  /* Map container in popover */
+  .map-popover-image,
   .map-popover-map {
-    width: 800px;
-    height: 800px;
-    position: relative;
-    flex-shrink: 0;
+    flex: none;
+    width: 100%;
+    /* Maintain aspect ratio even in column mode, but limit height */
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
-
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 1300px) {
-    .map-popover-content {
-      flex-direction: column;
-    }
-
-    .map-popover-image {
-      width: 85vw;
-      height: 85vw;
-      max-width: 400px;
-      max-height: 400px;
-    }
-
-    .map-popover-map {
-      width: 85vw;
-      height: 85vw;
-      max-width: 800px;
-      max-height: 800px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .map-popover-image {
-      width: 90vw;
-      height: 60vw;
-    }
-
-    .map-popover-map {
-      width: 90vw;
-      height: 90vw;
-    }
-  }
+}
