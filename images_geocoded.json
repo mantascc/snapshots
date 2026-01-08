@@ -526,37 +526,5 @@
     "lat": 55.7006228,
     "lng": 12.5386648,
     "originalLocation": "Norrebro St"
-  },
-  {
-    "file": "67.webp",
-    "title": "Svitrigailos g. 5",
-    "date": "",
-    "lat": "54.67977808789642",
-    "lng": "25.26645172838869",
-    "originalLocation": "Svitrigailos g. 5"
-  },
-  {
-    "file": "68.webp",
-    "title": "Föreningsgatan 5",
-    "date": "",
-    "lat": "55.596722692597766",
-    "lng": "13.002492944637515",
-    "originalLocation": "Föreningsgatan 5"
-  },
-  {
-    "file": "69.webp",
-    "title": "Rådhuspladsen",
-    "date": "",
-    "lat": "55.69294662645265",
-    "lng": "12.575555",
-    "originalLocation": "Rådhuspladsen"
-  },
-  {
-    "file": "70.webp",
-    "title": "Vesterport",
-    "date": "",
-    "lat": "55.675442010216535",
-    "lng": "12.562359910961261",
-    "originalLocation": "Vesterport"
   }
 ]

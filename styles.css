@@ -26,6 +26,10 @@ body {
   
   
   /* Make sure images fit their tiles */
+  .tile {
+    cursor: pointer;
+  }
+
   .tile img {
     width: 100%;
     height: auto;
@@ -72,4 +76,155 @@ body {
     font-family: inherit;
     transition: opacity 0.15s;
   }
-  
+
+  /* Map popover overlay */
+  .map-popover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .map-popover-overlay.active {
+    display: flex;
+  }
+
+  /* Map popover card */
+  .map-popover-card {
+    background: #1a1f27;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: slideUp 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Map popover header */
+  .map-popover-header {
+    background: #232A33;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2a3139;
+    flex-shrink: 0;
+  }
+
+  .map-popover-title {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .map-popover-close {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .map-popover-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Map popover content container */
+  .map-popover-content {
+    display: flex;
+    gap: 0;
+    overflow: auto;
+  }
+
+  /* Image container in popover */
+  .map-popover-image {
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-popover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Map container in popover */
+  .map-popover-map {
+    width: 800px;
+    height: 800px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1300px) {
+    .map-popover-content {
+      flex-direction: column;
+    }
+
+    .map-popover-image {
+      width: 85vw;
+      height: 85vw;
+      max-width: 400px;
+      max-height: 400px;
+    }
+
+    .map-popover-map {
+      width: 85vw;
+      height: 85vw;
+      max-width: 800px;
+      max-height: 800px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .map-popover-image {
+      width: 90vw;
+      height: 60vw;
+    }
+
+    .map-popover-map {
+      width: 90vw;
+      height: 90vw;
+    }
+  }
