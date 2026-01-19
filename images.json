@@ -558,5 +558,21 @@
     "lat": 55.675442010216535,
     "lng": 12.562359910961261,
     "originalLocation": "Vesterport"
+  },
+  {
+    "file": "71.webp",
+    "title": "Enghavevej",
+    "date": "2026",
+    "lat": 55.66973058671223,
+    "lng": 12.5455322290864,
+    "originalLocation": "Enghavevej"
+  },
+  {
+    "file": "72.webp",
+    "title": "Kebabistan",
+    "date": "2026",
+    "lat": 55.66778420715226,
+    "lng": 12.5486501384633,
+    "originalLocation": "Kebabistan"
   }
 ]
