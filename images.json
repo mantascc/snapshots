@@ -574,5 +574,53 @@
     "lat": 55.66778420715226,
     "lng": 12.5486501384633,
     "originalLocation": "Kebabistan"
+  },
+  {
+    "file": "73.webp",
+    "title": "Atlas",
+    "date": "2026",
+    "lat": 55.66574922325351,
+    "lng": 12.533915453728023,
+    "originalLocation": "Ny Calsberg Vej"
+  },
+  {
+    "file": "74.webp",
+    "title": "Fotex",
+    "date": "2026",
+    "lat": 55.67358098102546,
+    "lng": 12.551307608673085,
+    "originalLocation": "Tullinsgade"
+  },
+  {
+    "file": "75.webp",
+    "title": "Standford Theater",
+    "date": "2026",
+    "lat": 37.445063270107255,
+    "lng": -122.162485470103,
+    "originalLocation": "University ave"
+  },
+  {
+    "file": "76.webp",
+    "title": "Caltrain",
+    "date": "2026",
+    "lat": 37.44351206013253,
+    "lng": -122.16527115316995,
+    "originalLocation": "Palo Alto st"
+  },
+  {
+    "file": "77.webp",
+    "title": "Cowper st",
+    "date": "2026",
+    "lat": 37.44711391596339,
+    "lng": -122.15728756427133,
+    "originalLocation": "Cowper st"
+  },
+  {
+    "file": "78.webp",
+    "title": "Cleaners",
+    "date": "2026",
+    "lat": 37.44709101803972,
+    "lng": -122.1584889371752,
+    "originalLocation": "Hamilton Ave"
   }
 ]
