@@ -622,5 +622,13 @@
     "lat": 37.44709101803972,
     "lng": -122.1584889371752,
     "originalLocation": "Hamilton Ave"
+  },
+  {
+    "file": "79.webp",
+    "title": "Wells Fargo",
+    "date": "2026",
+    "lat": 37.34195,
+    "lng": -121.9103306,
+    "originalLocation": "Wells Fargo"
   }
 ]
