@@ -630,5 +630,29 @@
     "lat": 37.34195,
     "lng": -121.9103306,
     "originalLocation": "Wells Fargo"
+  },
+  {
+    "file": "80.webp",
+    "title": "San Mateo",
+    "date": "2026",
+    "lat": 37.56513911314956,
+    "lng": -122.31924338594669,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "81.webp",
+    "title": "San Mateo",
+    "date": "2026",
+    "lat": 37.55661716375382,
+    "lng": -122.30888256629856,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "82.webp",
+    "title": "San Mateo",
+    "date": "2026",
+    "lat": 37.55661716375382,
+    "lng": -122.30888256629856,
+    "originalLocation": "San Mateo"
   }
 ]
