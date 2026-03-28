@@ -662,5 +662,13 @@
     "lat": 37.541094,
     "lng": -122.301911,
     "originalLocation": "San Mateo"
+  },
+  {
+    "file": "84.webp",
+    "title": "Fox Theatre",
+    "date": "2026",
+    "lat": 37.486553,
+    "lng": -122.230264,
+    "originalLocation": "Broadway, Redwood City"
   }
 ]
