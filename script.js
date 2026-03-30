@@ -158,23 +158,47 @@ function setupCloseHandlers(overlay) {
   });
 }
 
-// Load images.json and create tiles with location tooltip
+// Load images.json and create tiles grouped by year
 fetch('images.json')
   .then(response => response.json())
   .then(images => {
-    globalImages = images.slice().reverse(); // Store globally
-    const grid = document.querySelector('.grid');
-    grid.innerHTML = '';
-    globalImages.forEach(image => {
-      const div = document.createElement('div');
-      div.className = 'tile';
-      div.innerHTML = `<img src="images/${image.file}" alt="${image.file}" loading="lazy">`;
-      grid.appendChild(div);
+    const hidden = ['3.webp', '6.webp'];
+    globalImages = images.slice().reverse().filter(img => !hidden.includes(img.file));
+    const content = document.querySelector('.content');
+    content.innerHTML = '';
 
-      // Click handler for map popover
-      div.addEventListener('click', (e) => {
-        console.log('Tile clicked:', image.title, image.lat, image.lng);
-        createMapPopover(image);
-      });
+    // Group by year, preserving newest-first order
+    const groups = {};
+    globalImages.forEach(image => {
+      const year = image.date || 'Unknown';
+      if (!groups[year]) groups[year] = [];
+      groups[year].push(image);
     });
+
+    // Render each year group
+    Object.keys(groups)
+      .sort((a, b) => b - a) // descending: 2026, 2025, ...
+      .forEach(year => {
+        const section = document.createElement('div');
+        section.className = 'year-section';
+
+        const label = document.createElement('div');
+        label.className = 'year-label';
+        label.textContent = year;
+        section.appendChild(label);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        groups[year].forEach(image => {
+          const div = document.createElement('div');
+          div.className = 'tile';
+          div.innerHTML = `<img src="images/${image.file}" alt="${image.file}" loading="lazy">`;
+          div.addEventListener('click', () => createMapPopover(image));
+          grid.appendChild(div);
+        });
+
+        section.appendChild(grid);
+        content.appendChild(section);
+      });
   });
