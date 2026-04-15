@@ -686,5 +686,45 @@
     "lat": 47.610483,
     "lng": -122.341706,
     "originalLocation": "Seattle"
+  },
+  {
+    "file": "87.webp",
+    "title": "Central Computers",
+    "date": "2026",
+    "lat": 37.54244659681789,
+    "lng": -122.30317147523148,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "88.webp",
+    "title": "Las Palmas Salsa Bar",
+    "date": "2026",
+    "lat": 37.564771811207585,
+    "lng": -122.32339315298805,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "89.webp",
+    "title": "Body Central Massage Spa",
+    "date": "2026",
+    "lat": 37.54164669564742,
+    "lng": -122.302275389999,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "90.webp",
+    "title": "Video Only",
+    "date": "2026",
+    "lat": 37.55484036517328,
+    "lng": -122.3021398682495,
+    "originalLocation": "San Mateo"
+  },
+  {
+    "file": "91.webp",
+    "title": "Good Thing Cafe & Supplies",
+    "date": "2026",
+    "lat": 37.57832363090585,
+    "lng": -122.34881260156455,
+    "originalLocation": "Burlingame"
   }
 ]
