@@ -62,7 +62,6 @@ php -S localhost:8000
 
 3. Open in browser:
 - Gallery view: `http://localhost:8000/index.html`
-- Map view: `http://localhost:8000/map.html`
 
 ## Usage
 
@@ -71,12 +70,6 @@ php -S localhost:8000
 - Click any image to open the modal viewer
 - Use arrow keys (←/→) to navigate between images
 - Press Escape or click outside to close the modal
-
-### Exploring the Map
-- Visit `map.html` for the full map experience
-- Zoom in to see marker clusters expand
-- At zoom level 10+, actual image thumbnails appear
-- Click any marker to view the image
 
 ### Adding New Images
 
@@ -104,11 +97,8 @@ node geocode.js
 ```
 snapshots/
 ├── index.html              # Gallery page
-├── map.html                # Map view page
 ├── script.js               # Gallery and modal logic
-├── map-script.js           # Map initialization and clustering
 ├── styles.css              # Gallery styles
-├── map-styles.css          # Map styles
 ├── geocode.js              # Geocoding utility (Node.js)
 ├── images/                 # WebP images
 ├── original-images/        # Source images
