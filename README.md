@@ -1,6 +1,6 @@
 # snapshots
 
-Field notes from places I've been. Each capture has a location and a date — browse the grid or pin them on a map.
+Snapshots from the IRL. Each capture has a location and a date — browse the grid or pin them on a map.
 
 ## Run it
 
