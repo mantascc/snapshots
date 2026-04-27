@@ -726,5 +726,29 @@
     "lat": 37.57832363090585,
     "lng": -122.34881260156455,
     "originalLocation": "Burlingame"
+  },
+  {
+    "file": "92.webp",
+    "title": "Texas Flag Shed",
+    "date": "2026",
+    "lat": 29.963867290333976,
+    "lng": -98.91199021465664,
+    "originalLocation": "Comfort, TX"
+  },
+  {
+    "file": "93.webp",
+    "title": "Comfort Water Tower",
+    "date": "2026",
+    "lat": 29.970755100890578,
+    "lng": -98.90968539504185,
+    "originalLocation": "Comfort, TX"
+  },
+  {
+    "file": "94.webp",
+    "title": "Comfort Storefront",
+    "date": "2026",
+    "lat": 29.965997741801836,
+    "lng": -98.90561748938867,
+    "originalLocation": "Comfort, TX"
   }
 ]
