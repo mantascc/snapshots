@@ -20,8 +20,6 @@ There's a `/upload` skill in Claude Code that handles the WebP conversion, geoco
 2. Convert to WebP into `images/`
 3. Add an entry to `images.json` with `file`, `title`, `date`, `lat`, `lng`
 
-`geocode.js` will fill in coordinates from a location string if you don't have them.
-
 ## Layout
 
 - `index.html` — the gallery
