@@ -750,5 +750,21 @@
     "lat": 29.965997741801836,
     "lng": -98.90561748938867,
     "originalLocation": "Comfort, TX"
+  },
+  {
+    "file": "95.webp",
+    "title": "Lake Chabot Payphone",
+    "date": "2026",
+    "lat": 37.717197435962596,
+    "lng": -122.10447048613672,
+    "originalLocation": "Lake Chabot Regional Park"
+  },
+  {
+    "file": "96.webp",
+    "title": "Fire Danger Low",
+    "date": "2026",
+    "lat": 37.717197435962596,
+    "lng": -122.10447048613672,
+    "originalLocation": "Lake Chabot Regional Park"
   }
 ]
