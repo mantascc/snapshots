@@ -766,5 +766,21 @@
     "lat": 37.717197435962596,
     "lng": -122.10447048613672,
     "originalLocation": "Lake Chabot Regional Park"
+  },
+  {
+    "file": "97.webp",
+    "title": "Peninsula Hauling & Demolition",
+    "date": "2026",
+    "lat": 37.51039756109618,
+    "lng": -122.25323405688363,
+    "originalLocation": "San Carlos, CA"
+  },
+  {
+    "file": "98.webp",
+    "title": "Blue Oak Brewing",
+    "date": "2026",
+    "lat": 37.51039756109618,
+    "lng": -122.25323405688363,
+    "originalLocation": "San Carlos, CA"
   }
 ]
