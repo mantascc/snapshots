@@ -782,5 +782,29 @@
     "lat": 37.51039756109618,
     "lng": -122.25323405688363,
     "originalLocation": "San Carlos, CA"
+  },
+  {
+    "file": "99.webp",
+    "title": "Star Wash Laundromat",
+    "date": "2026",
+    "lat": 37.76339994715645,
+    "lng": -122.42639482729275,
+    "originalLocation": "San Francisco, CA"
+  },
+  {
+    "file": "100.webp",
+    "title": "Chick-fil-A",
+    "date": "2026",
+    "lat": 36.10942503640403,
+    "lng": -115.17280367569462,
+    "originalLocation": "Las Vegas, NV"
+  },
+  {
+    "file": "101.webp",
+    "title": "Flamingo Hotel Casino",
+    "date": "2026",
+    "lat": 36.11652608079562,
+    "lng": -115.17049158472958,
+    "originalLocation": "Las Vegas, NV"
   }
 ]
