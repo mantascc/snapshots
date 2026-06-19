@@ -806,5 +806,21 @@
     "lat": 36.11652608079562,
     "lng": -115.17049158472958,
     "originalLocation": "Las Vegas, NV"
+  },
+  {
+    "file": "102.webp",
+    "title": "Glass Express",
+    "date": "2026",
+    "lat": 37.5861908,
+    "lng": -122.3332672,
+    "originalLocation": "1027 Howard Avenue, San Mateo, CA"
+  },
+  {
+    "file": "103.webp",
+    "title": "Sailmakers",
+    "date": "2026",
+    "lat": 37.5861704,
+    "lng": -122.3339833,
+    "originalLocation": "1125 North Amphlett Boulevard, San Mateo, CA"
   }
 ]
