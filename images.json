@@ -822,21 +822,5 @@
     "lat": 37.5861704,
     "lng": -122.3339833,
     "originalLocation": "1125 North Amphlett Boulevard, San Mateo, CA"
-  },
-  {
-    "file": "104.webp",
-    "title": "Church of Christ",
-    "date": "2026",
-    "lat": 37.7750665,
-    "lng": -122.4660233,
-    "originalLocation": "701-721 8th Ave, San Francisco, CA 94118"
-  },
-  {
-    "file": "105.webp",
-    "title": "Tang James L Dental Office",
-    "date": "2026",
-    "lat": 37.7827323,
-    "lng": -122.4667731,
-    "originalLocation": "Tang James L, 703 Clement St, San Francisco, CA 94118"
   }
 ]
