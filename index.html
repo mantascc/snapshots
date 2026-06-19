@@ -132,6 +132,138 @@
       margin-bottom: var(--space-16);
     }
 
+    /* -- VIEW SWITCHER -- */
+    .view-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin: calc(-1 * var(--space-8)) 0 var(--space-10);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .view-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      padding: 2px;
+      border: 1px solid var(--border-default);
+      background: var(--ground-base);
+      border-radius: 8px;
+    }
+
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      min-width: 86px;
+      min-height: 32px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+      transition: color var(--duration-fast) var(--ease-snap),
+                  background var(--duration-fast) var(--ease-snap);
+    }
+
+    .view-btn + .view-btn {
+      margin-left: 1px;
+    }
+
+    .view-icon {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .view-btn:hover,
+    .view-btn.active {
+      color: var(--text-primary);
+      background: var(--ground-surface);
+    }
+
+    .view-meta {
+      color: var(--text-ghost);
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+    }
+
+    /* -- WORLD MAP -- */
+    .world-map-view {
+      display: none;
+      margin-bottom: var(--space-16);
+    }
+
+    .world-map-view.active {
+      display: block;
+    }
+
+    .world-map {
+      height: clamp(380px, 68vh, 720px);
+      min-height: 0;
+      background: var(--ground-base);
+      border: 1px solid var(--border-default);
+    }
+
+    .world-map .leaflet-popup-content-wrapper,
+    .world-map .leaflet-popup-tip {
+      background: var(--ground-modal);
+      border: 1px solid var(--border-default);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--text-default);
+    }
+
+    .world-map .leaflet-popup-content {
+      margin: var(--space-3);
+      min-width: 170px;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+    }
+
+    .pin-popup {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .pin-popup img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: var(--ground-void);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+    }
+
+    .pin-popup-title {
+      color: var(--text-primary);
+    }
+
+    .pin-popup-meta {
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .grid-view.hidden {
+      display: none;
+    }
+
     /* ── YEAR SECTION ── */
     .year-section {
       margin-bottom: var(--space-16);
@@ -486,6 +618,21 @@
       .nav-btn .nav-label {
         display: none;
       }
+      .view-shell {
+        align-items: stretch;
+        flex-direction: column;
+        margin-top: calc(-1 * var(--space-10));
+      }
+      .view-switcher {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .view-btn {
+        width: 100%;
+      }
+      .world-map {
+        height: 62vh;
+      }
     }
   </style>
 </head>
@@ -499,7 +646,34 @@
     <h1 class="title"><span id="typed-text"></span></h1>
     <div class="subtitle">snapshots from the irl</div>
 
-    <div class="content" id="content"></div>
+    <div class="view-shell">
+      <div class="view-switcher" aria-label="snapshot view">
+        <button class="view-btn active" type="button" data-view="grid" aria-pressed="true">
+          <svg class="view-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>grid</span>
+        </button>
+        <button class="view-btn" type="button" data-view="map" aria-pressed="false">
+          <svg class="view-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 18l-6 3V6l6-3 6 3 6-3v15l-6 3-6-3z"></path>
+            <path d="M9 3v15"></path>
+            <path d="M15 6v15"></path>
+          </svg>
+          <span>map</span>
+        </button>
+      </div>
+      <div class="view-meta" id="map-pin-count">-- pins</div>
+    </div>
+
+    <div class="world-map-view" id="world-map-view" aria-hidden="true">
+      <div class="world-map" id="world-map" role="region" aria-label="world map of snapshot locations"></div>
+    </div>
+
+    <div class="content grid-view" id="content"></div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -513,13 +687,131 @@
     });
 
     let currentMapInstance = null;
+    let currentWorldMapInstance = null;
     let globalImages = [];
+    let worldMapImages = [];
+    let activeView = 'grid';
 
     function pad(n, w) { return String(n).padStart(w, '0'); }
 
     function fmtCoord(lat, lng) {
-      if (!lat || !lng) return '';
-      return `${lat.toFixed(3)}, ${lng.toFixed(3)}`;
+      if (!hasCoords({ lat, lng })) return '';
+      return `${Number(lat).toFixed(3)}, ${Number(lng).toFixed(3)}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[char]));
+    }
+
+    function hasCoords(image) {
+      const lat = Number(image.lat);
+      const lng = Number(image.lng);
+      return Number.isFinite(lat) && Number.isFinite(lng) && !(lat === 0 && lng === 0);
+    }
+
+    function markerIcon(size = 12) {
+      return L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="background-color: #00ffaa; width: ${size}px; height: ${size}px; border-radius: 50%; border: 2px solid #0a0a0a; box-shadow: 0 0 12px rgba(0,255,170,0.8);"></div>`,
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2]
+      });
+    }
+
+    function addDarkTiles(map) {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+    }
+
+    function initWorldMap() {
+      const mapEl = document.getElementById('world-map');
+      if (!mapEl || currentWorldMapInstance) return;
+
+      if (!worldMapImages.length) {
+        mapEl.innerHTML = '<div class="no-coords">no location data</div>';
+        return;
+      }
+
+      currentWorldMapInstance = L.map(mapEl, {
+        center: [20, 0],
+        zoom: 2,
+        minZoom: 2,
+        zoomControl: true,
+        worldCopyJump: true,
+        scrollWheelZoom: true
+      });
+
+      addDarkTiles(currentWorldMapInstance);
+
+      const bounds = [];
+      worldMapImages.forEach(image => {
+        const lat = Number(image.lat);
+        const lng = Number(image.lng);
+        const title = escapeHtml((image.title || image.originalLocation || 'untitled').toLowerCase());
+        const coord = escapeHtml(fmtCoord(lat, lng));
+        const popup = `
+          <div class="pin-popup">
+            <img src="images/${escapeHtml(image.file)}" alt="${title}" data-file="${escapeHtml(image.file)}" loading="lazy" decoding="async">
+            <div class="pin-popup-title">${title}</div>
+            <div class="pin-popup-meta">${escapeHtml(image.date || 'unknown')} / ${coord}</div>
+          </div>
+        `;
+
+        L.marker([lat, lng], { icon: markerIcon(12) })
+          .bindPopup(popup)
+          .addTo(currentWorldMapInstance);
+        bounds.push([lat, lng]);
+      });
+
+      currentWorldMapInstance.on('popupopen', event => {
+        const popupEl = event.popup.getElement();
+        const preview = popupEl && popupEl.querySelector('[data-file]');
+        if (!preview) return;
+        preview.addEventListener('click', () => {
+          const image = globalImages.find(item => item.file === preview.dataset.file);
+          if (image) createMapPopover(image);
+        }, { once: true });
+      });
+
+      if (bounds.length) {
+        currentWorldMapInstance.fitBounds(bounds, {
+          padding: [32, 32],
+          maxZoom: 5
+        });
+      }
+    }
+
+    function setView(view) {
+      activeView = view;
+      const isMap = view === 'map';
+      const content = document.getElementById('content');
+      const mapView = document.getElementById('world-map-view');
+      const buttons = document.querySelectorAll('[data-view]');
+
+      content.classList.toggle('hidden', isMap);
+      mapView.classList.toggle('active', isMap);
+      mapView.setAttribute('aria-hidden', String(!isMap));
+
+      buttons.forEach(button => {
+        const active = button.dataset.view === view;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+
+      if (isMap) {
+        initWorldMap();
+        setTimeout(() => {
+          if (currentWorldMapInstance) currentWorldMapInstance.invalidateSize();
+        }, 0);
+      }
     }
 
     function createMapPopover(image) {
@@ -575,7 +867,7 @@
         if (e.key === 'ArrowRight') createMapPopover(nextImage);
       };
 
-      if (image.lat && image.lng) {
+      if (hasCoords(image)) {
         setTimeout(() => {
           if (currentMapInstance) {
             currentMapInstance.remove();
@@ -590,17 +882,8 @@
             doubleClickZoom: false,
             touchZoom: false
           });
-          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            maxZoom: 19
-          }).addTo(currentMapInstance);
-          const icon = L.divIcon({
-            className: 'custom-marker',
-            html: '<div style="background-color: #00ffaa; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #0a0a0a; box-shadow: 0 0 12px rgba(0,255,170,0.8);"></div>',
-            iconSize: [10, 10],
-            iconAnchor: [5, 5]
-          });
-          L.marker([image.lat, image.lng], { icon }).addTo(currentMapInstance);
+          addDarkTiles(currentMapInstance);
+          L.marker([image.lat, image.lng], { icon: markerIcon(10) }).addTo(currentMapInstance);
         }, 100);
       } else {
         setTimeout(() => {
@@ -636,9 +919,15 @@
       .then(images => {
         const hidden = ['3.webp', '6.webp'];
         globalImages = images.slice().reverse().filter(img => !hidden.includes(img.file));
+        worldMapImages = globalImages.filter(hasCoords);
 
         const content = document.getElementById('content');
         content.innerHTML = '';
+
+        document.getElementById('map-pin-count').textContent = `${worldMapImages.length} pins`;
+        document.querySelectorAll('[data-view]').forEach(button => {
+          button.addEventListener('click', () => setView(button.dataset.view));
+        });
 
         const groups = {};
         globalImages.forEach(image => {
