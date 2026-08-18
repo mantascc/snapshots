@@ -822,5 +822,21 @@
     "lat": 37.5861704,
     "lng": -122.3339833,
     "originalLocation": "1125 North Amphlett Boulevard, San Mateo, CA"
+  },
+  {
+    "file": "104.webp",
+    "title": "Rabbit Hole Sign",
+    "date": "2026",
+    "lat": 37.74105,
+    "lng": -122.4227556,
+    "originalLocation": "Rabbit Hole, San Francisco, CA"
+  },
+  {
+    "file": "105.webp",
+    "title": "Columbia Express",
+    "date": "2026",
+    "lat": 38.0342472,
+    "lng": -120.4011667,
+    "originalLocation": "Columbia, CA"
   }
 ]
