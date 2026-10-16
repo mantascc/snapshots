@@ -21,15 +21,18 @@ The normal flow is:
    This folder is local-only and gitignored. It is an intake folder, not part of
    the published snapshot set.
 
-2. In Codex, run `/pixelize`.
+2. Run `/compose` with a picture (or a local photo path) in a supported coding agent.
 
-   Codex uses the built-in image generation/editing interface with
-   `prompts/pixel-art-snapshot.md`. No OpenAI API key or local image API script
-   is used. The accepted output is saved as `original-images/<N>-<slug>.png`.
+   The skill is available in both `.agents/skills/compose/` and
+   `.claude/skills/compose/`. It creates a square, source-faithful Snapshots
+   composition using `prompts/pixel-art-snapshot.md` and the environment's
+   built-in image editing tool. It preserves the input photo and saves the draft
+   as `original-images/<N>-<slug>.png`. The existing `/pixelize` skill is
+   also available in Claude Code.
 
-3. Review the PNG. If the result is good, publish the snapshot. There's a `/upload` skill in Claude Code that handles
-   the WebP conversion, geocoding, and `images.json` update in one shot.
-   Otherwise, by hand:
+3. Review the draft PNG. Once approved, run `/upload` to publish it.
+   The skill handles WebP conversion, geocoding, and the `images.json`
+   update. Otherwise, by hand:
 
    1. Drop the source into `original-images/`
    2. Convert to WebP into `images/`
@@ -42,4 +45,5 @@ The normal flow is:
 - `images.json` — the source of truth for everything shown
 - `original-original-images/` — ignored intake folder for untouched source photos
 - `original-images/` — ignored generated pixel-art source PNGs
-- `prompts/pixel-art-snapshot.md` — reusable pixel-art transform prompt
+- `prompts/pixel-art-snapshot.md` — canonical Snapshots visual specification
+- `.agents/skills/compose/SKILL.md` and `.claude/skills/compose/SKILL.md` — photo-to-snapshot composition skill
