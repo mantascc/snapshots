@@ -328,6 +328,13 @@
       transition: border-color var(--duration-base) var(--ease-snap);
     }
 
+    .grid-placeholder {
+      aspect-ratio: 1 / 1;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.035);
+      pointer-events: none;
+    }
+
     .tile:hover {
       border-color: var(--border-strong);
     }
@@ -959,6 +966,25 @@
 
         const tileRegistry = [];
 
+        // Complete each year's last row, including after responsive column changes.
+        const gridObserver = new ResizeObserver(entries => {
+          entries.forEach(({ target: grid }) => {
+            if (!grid.clientWidth) return;
+            const columns = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+            const count = grid.querySelectorAll('.tile').length;
+            const missing = (columns - count % columns) % columns;
+            const placeholders = grid.querySelectorAll('.grid-placeholder');
+            if (placeholders.length === missing) return;
+            placeholders.forEach(placeholder => placeholder.remove());
+            for (let i = 0; i < missing; i++) {
+              const placeholder = document.createElement('div');
+              placeholder.className = 'grid-placeholder';
+              placeholder.setAttribute('aria-hidden', 'true');
+              grid.appendChild(placeholder);
+            }
+          });
+        });
+
         let globalIdx = 0;
         years.forEach(year => {
           const section = document.createElement('section');
@@ -1028,6 +1054,7 @@
 
           section.appendChild(grid);
           content.appendChild(section);
+          gridObserver.observe(grid);
         });
 
         // Weighted positional jitter — biased top-down, but neighbors swap
