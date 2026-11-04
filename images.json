@@ -842,9 +842,10 @@
   {
     "file": "106.webp",
     "title": "Bayside",
-    "date": "2026-08-23",
+    "date": "2026",
     "lat": 37.5528611,
     "lng": -122.2903333,
-    "originalLocation": "Bayside"
+    "originalLocation": "Bayside",
+    "captureDate": "2026-08-23"
   }
 ]
