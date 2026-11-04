@@ -1,11 +1,11 @@
 ---
 name: compose
-description: Turn a supplied photograph into a Snapshots-style square pixel-art composition. Use for “make this a snapshot”, “compose this photo”, or “turn this picture into the snapshots style”; prepare a draft, never publish without approval.
+description: Turn a supplied photograph into a Snapshots-style square pixel-art composition. Use for “make this a snapshot”, “compose this photo”, or “turn this picture into the snapshots style”; prepare two options by default, never publish without approval.
 ---
 
 # Compose a snapshot
 
-Transform **one source picture** into **one Snapshots composition**. This is an image-to-image transformation, not a collage, an invented scene, or a gallery layout. The canonical visual specification is `prompts/pixel-art-snapshot.md`; read that file before making the image.
+Transform **one source picture** into **two separate Snapshots image options by default**, unless the user requests a different count. Both options must follow the same source-fidelity and style requirements; vary only rendering choices within those constraints. This is an image-to-image transformation, not a collage, an invented scene, or a gallery layout. The canonical visual specification is `prompts/pixel-art-snapshot.md`; read that file before making the image.
 
 ## Select the input
 
@@ -34,11 +34,11 @@ Apply the full rules from `prompts/pixel-art-snapshot.md`, with these priorities
 ## Workflow
 
 1. Read the canonical prompt, inspect the source, and visually inspect the last five published snapshots as described above.
-2. Use the current environment's **built-in image editing/generation tool**, supplying the source image and the canonical prompt plus the composition priorities and observed reference-style cues above. This must be an image edit grounded in the source, not a text-only recreation. Do **not** use external image APIs, API keys, network scripts, or a simple pixelation filter as a substitute.
-3. Inspect the generated result against the source: object inventory, people count, spatial relationships, framing, text, palette, pixel size, and 1:1 dimensions. Also compare its rendering style with the five references. If it fails, revise the edit; do not present it as faithful.
-4. Select the next available `N` by checking `images.json`, `images/`, and `original-images/`. Ignore `original-original-images/` for numbering.
-5. Save the selected draft as `original-images/<N>-<short-slug>.png`. This generated-source folder is gitignored; do not put untouched photographs here.
-6. Show the draft to the user for review, with any remaining fidelity concerns.
+2. Generate two distinct image options as separate outputs, not a combined comparison sheet or duplicate copies. If the tool produces one image per call, make two calls, each grounded in the original source photo and the same five style references. Use the current environment's **built-in image editing/generation tool**, supplying the source image and the canonical prompt plus the composition priorities and observed reference-style cues above. This must be an image edit grounded in the source, not a text-only recreation. Do **not** use external image APIs, API keys, network scripts, or a simple pixelation filter as a substitute.
+3. Inspect each generated option against the source: object inventory, people count, spatial relationships, framing, text, palette, pixel size, and 1:1 dimensions. Also compare its rendering style with the five references. If it fails, revise the edit; do not present it as faithful.
+4. Keep the options in a temporary draft folder outside `original-images/` so the upload flow cannot mistake both for approved snapshots. Save each as a separate PNG and show both, labeled Option 1 and Option 2, with any remaining fidelity concerns.
+5. After the user chooses an option, select the next available `N` by checking `images.json`, `images/`, and `original-images/`. Ignore `original-original-images/` and temporary options for numbering.
+6. Save only the chosen option as `original-images/<N>-<short-slug>.png`. This generated-source folder is gitignored; do not put untouched photographs here. Choosing an option does not by itself approve publishing.
 
 ## Boundaries
 
