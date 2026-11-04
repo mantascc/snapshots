@@ -9,7 +9,7 @@ Sky: solid or 2-band gradient, pure geometric.
 
 IMAGE RATIO
 
-Square.
+Square (1:1, equal pixel width and height). The scene must fill the entire canvas edge to edge. No borders, side bars, letterboxing, pillarboxing, padding, frames, mattes, or transparent margins.
 
 COLOR
 
@@ -22,7 +22,7 @@ COMPOSITION
 Frontal plane, slight elevation. Never tourist angle.
 Signage must remain legible.
 People: silhouette-only, no faces.
-Preserve the framing of the original photo exactly. Do not crop or recompose.
+Preserve the source camera perspective and the main subject. For nonsquare inputs, crop to square, trimming peripheral sky or ground where possible while retaining important signage and people. Never stretch the image or invent unseen scenery to fill the square.
 
 MOOD
 
@@ -31,8 +31,7 @@ No retrofuturism. No nostalgia filter. Contemporary but flattened.
 
 FIDELITY
 
-Preserve every element exactly as it appears in the source photo.
-Do not add, remove, or infer any elements not visible in the image.
+Within the selected square crop, preserve every element as it appears in the source photo. Cropping peripheral content to achieve a borderless square is allowed; do not add, remove, or invent objects within that crop.
 If a scene has no people, render no people.
 If a scene has one person, render exactly one person.
 Treat the photo as a strict inventory. Pixel art is a filter, not a reimagining.
