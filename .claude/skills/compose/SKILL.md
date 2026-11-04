@@ -14,6 +14,13 @@ Transform **one source picture** into **one Snapshots composition**. This is an 
 - Inspect the actual image before editing. Identify its framing, key forms, color temperature, visible text, people count, and anything that must be preserved.
 - Never replace or alter the original photo.
 
+## Inspect the last five published snapshots
+
+- Before every generation, read the current `images.json` and take its last five entries (`slice(-5)`, newest first for inspection). Use publication order, not the photo date or filesystem modification time. If fewer than five are published, inspect all available entries.
+- Open and visually inspect each referenced `images/<file>` image; reading filenames or metadata is not enough. Use the current repository or fetch the published images when they are not available locally. If a reference cannot be viewed, report which one and resolve access before generating rather than silently skipping it.
+- Use these five images as style references for pixel density, edge treatment, palette restraint, shading, and level of simplification. Carry the observed style cues into the image-edit prompt, and supply the reference images to the tool when supported, clearly distinguishing them from the source photo.
+- Preserve the source photo's objects, framing, people count, and light temperature. Do not borrow scene content or composition from the references; source fidelity and the canonical prompt remain authoritative.
+
 ## Compose in the Snapshots language
 
 Apply the full rules from `prompts/pixel-art-snapshot.md`, with these priorities:
@@ -26,9 +33,9 @@ Apply the full rules from `prompts/pixel-art-snapshot.md`, with these priorities
 
 ## Workflow
 
-1. Read the canonical prompt and inspect the source.
-2. Use the current environment's **built-in image editing/generation tool**, supplying the source image and the canonical prompt plus the composition priorities above. This must be an image edit grounded in the source, not a text-only recreation. Do **not** use external image APIs, API keys, network scripts, or a simple pixelation filter as a substitute.
-3. Inspect the generated result against the source: object inventory, people count, spatial relationships, framing, text, palette, pixel size, and 1:1 dimensions. If it fails, revise the edit; do not present it as faithful.
+1. Read the canonical prompt, inspect the source, and visually inspect the last five published snapshots as described above.
+2. Use the current environment's **built-in image editing/generation tool**, supplying the source image and the canonical prompt plus the composition priorities and observed reference-style cues above. This must be an image edit grounded in the source, not a text-only recreation. Do **not** use external image APIs, API keys, network scripts, or a simple pixelation filter as a substitute.
+3. Inspect the generated result against the source: object inventory, people count, spatial relationships, framing, text, palette, pixel size, and 1:1 dimensions. Also compare its rendering style with the five references. If it fails, revise the edit; do not present it as faithful.
 4. Select the next available `N` by checking `images.json`, `images/`, and `original-images/`. Ignore `original-original-images/` for numbering.
 5. Save the selected draft as `original-images/<N>-<short-slug>.png`. This generated-source folder is gitignored; do not put untouched photographs here.
 6. Show the draft to the user for review, with any remaining fidelity concerns.
