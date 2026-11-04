@@ -139,29 +139,20 @@
       justify-content: space-between;
       gap: var(--space-4);
       margin: calc(-1 * var(--space-8)) 0 var(--space-10);
-      padding-bottom: var(--space-4);
-      border-bottom: 1px solid var(--border-subtle);
     }
 
     .view-switcher {
       display: inline-flex;
       align-items: center;
-      gap: 0;
-      padding: 2px;
-      border: 1px solid var(--border-default);
-      background: var(--ground-base);
-      border-radius: 8px;
+      gap: var(--space-2);
+      color: var(--text-tertiary);
+      font-size: var(--text-xs);
     }
 
     .view-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-2);
-      min-width: 86px;
       min-height: 32px;
+      padding: 0;
       border: 0;
-      border-radius: 6px;
       background: transparent;
       color: var(--text-tertiary);
       cursor: pointer;
@@ -169,37 +160,12 @@
       font-size: var(--text-xs);
       letter-spacing: var(--tracking-wide);
       text-transform: lowercase;
-      transition: color var(--duration-fast) var(--ease-snap),
-                  background var(--duration-fast) var(--ease-snap);
-    }
-
-    .view-btn + .view-btn {
-      margin-left: 1px;
-    }
-
-    .view-icon {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 auto;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
+      transition: color var(--duration-fast) var(--ease-snap);
     }
 
     .view-btn:hover,
     .view-btn.active {
       color: var(--text-primary);
-      background: var(--ground-surface);
-    }
-
-    .view-meta {
-      color: var(--text-ghost);
-      font-size: var(--text-xs);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: var(--tracking-wide);
-      text-transform: lowercase;
     }
 
     /* -- WORLD MAP -- */
@@ -635,13 +601,6 @@
         flex-direction: column;
         margin-top: calc(-1 * var(--space-10));
       }
-      .view-switcher {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-      .view-btn {
-        width: 100%;
-      }
       .world-map {
         height: 62vh;
       }
@@ -659,26 +618,11 @@
     <div class="subtitle">snapshots from the irl</div>
 
     <div class="view-shell">
-      <div class="view-switcher" aria-label="snapshot view">
-        <button class="view-btn active" type="button" data-view="grid" aria-pressed="true">
-          <svg class="view-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-          </svg>
-          <span>grid</span>
-        </button>
-        <button class="view-btn" type="button" data-view="map" aria-pressed="false">
-          <svg class="view-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M9 18l-6 3V6l6-3 6 3 6-3v15l-6 3-6-3z"></path>
-            <path d="M9 3v15"></path>
-            <path d="M15 6v15"></path>
-          </svg>
-          <span>map</span>
-        </button>
+      <div class="view-switcher" role="group" aria-label="snapshot view">
+        <button class="view-btn active" type="button" data-view="grid" aria-pressed="true">grid</button>
+        <span aria-hidden="true">/</span>
+        <button class="view-btn" type="button" data-view="map" aria-pressed="false">map</button>
       </div>
-      <div class="view-meta" id="map-pin-count">-- pins</div>
     </div>
 
     <div class="world-map-view" id="world-map-view" aria-hidden="true">
@@ -937,7 +881,6 @@
         const content = document.getElementById('content');
         content.innerHTML = '';
 
-        document.getElementById('map-pin-count').textContent = `${worldMapImages.length} pins`;
         document.querySelectorAll('[data-view]').forEach(button => {
           button.addEventListener('click', () => setView(button.dataset.view));
         });
