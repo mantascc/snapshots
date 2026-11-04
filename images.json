@@ -838,5 +838,13 @@
     "lat": 38.0342472,
     "lng": -120.4011667,
     "originalLocation": "Columbia, CA"
+  },
+  {
+    "file": "106.webp",
+    "title": "Bayside",
+    "date": "2026-08-23",
+    "lat": 37.5528611,
+    "lng": -122.2903333,
+    "originalLocation": "Bayside"
   }
 ]
