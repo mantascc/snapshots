@@ -847,5 +847,14 @@
     "lng": -122.2903333,
     "originalLocation": "Bayside",
     "captureDate": "2026-08-23"
+  },
+  {
+    "file": "107.webp",
+    "title": "New Mission",
+    "date": "2026",
+    "captureDate": "2026-09-06",
+    "lat": 37.7566,
+    "lng": -122.4187861,
+    "originalLocation": "New Mission, San Francisco, CA"
   }
 ]
