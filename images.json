@@ -856,5 +856,32 @@
     "lat": 37.7566,
     "lng": -122.4187861,
     "originalLocation": "New Mission, San Francisco, CA"
+  },
+  {
+    "file": "108.webp",
+    "title": "Blue Oak Tap Room & Brewery",
+    "date": "2026",
+    "captureDate": "2026-09-11",
+    "lat": 37.5102722,
+    "lng": -122.2529111,
+    "originalLocation": "Blue Oak Tap Room & Brewery"
+  },
+  {
+    "file": "109.webp",
+    "title": "Gilroy Garlic Fries",
+    "date": "2026",
+    "captureDate": "2026-09-21",
+    "lat": 37.7784389,
+    "lng": -122.3905333,
+    "originalLocation": "Gilroy Garlic Fries"
+  },
+  {
+    "file": "110.webp",
+    "title": "Starting Lineup Training Facility",
+    "date": "2026",
+    "captureDate": "2026-10-11",
+    "lat": 37.5448083,
+    "lng": -122.3049528,
+    "originalLocation": "Starting Lineup Training Facility"
   }
 ]
